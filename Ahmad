@@ -1,0 +1,45 @@
+```java
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class AhmadApp extends JFrame implements ActionListener {
+
+    JButton whatsappButton;
+
+    public AhmadApp() {
+        // Set up the frame
+        setTitle("Ahmad");
+        setIconImage(new ImageIcon("icon.png").getImage());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(300, 300);
+        setLocationRelativeTo(null);
+
+        // Add the welcome text
+        JLabel welcomeLabel = new JLabel("Welcome");
+        welcomeLabel.setFont(new Font("Lemon Milk", Font.PLAIN, 20));
+        welcomeLabel.setHorizontalAlignment(JLabel.CENTER);
+        add(welcomeLabel, BorderLayout.NORTH);
+
+        // Add the WhatsApp button
+        whatsappButton = new JButton(new ImageIcon("whatsapp.png"));
+        whatsappButton.addActionListener(this);
+        add(whatsappButton, BorderLayout.CENTER);
+
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        // Open the WhatsApp link when the button is clicked
+        try {
+            Desktop.getDesktop().browse(new URI("https://wa.me/923334461778"));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        new AhmadApp();
+    }
+}
+```
